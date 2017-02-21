@@ -69,7 +69,7 @@ model.add(Convolution2D(64,3,3, activation='relu'))
 model.add(Convolution2D(64,3,3, activation='relu'))
 #model.add(MaxPooling2D())
 model.add(Flatten())
-#model.add(Dropout(0.25))
+model.add(Dropout(0.5))
 model.add(Dense(100, activation='relu'))
 model.add(Dense(50, activation='relu'))
 model.add(Dense(10, activation='relu'))
@@ -82,7 +82,7 @@ model.summary()
 
 #model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=6)
 
-history_object = model.fit_generator(train_generator, samples_per_epoch = len(train_samples), validation_data = validation_generator, nb_val_samples = len(validation_samples), nb_epoch=5, verbose=1)
+history_object = model.fit_generator(train_generator, samples_per_epoch = len(train_samples)*6, validation_data = validation_generator, nb_val_samples = len(validation_samples)*6, nb_epoch=6, verbose=1)
 
 ### print the keys contained in the history object
 print(history_object.history.keys())
